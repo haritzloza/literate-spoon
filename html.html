@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolioa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Portafolioa</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Sarrera</a></li>
+                <li><a href="#portfolio">Galería</a></li>
+                <li><a href="#about">Niri buruz</a></li>
+                <li><a href="#services">Zerbitzuak</a></li>
+                <li><a href="#contact">Kontaktua</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="hero">
+            <h2>Portafolioa</h2>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2>Galería</h2>
+        <div class="gallery">
+            <img src="dji_fly_20240816_210904_0141_1723838874584_photo.jpg" alt="Mendi baten argazkia" class="gallery-item" >
+            <img src="dji_fly_20240610_164702_0008_1718031684256_photo.jpg" alt="Descripción de la foto 2" class="gallery-item" >
+            <!-- Más imágenes -->
+        </div>
+    </section>
+    
+    
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+
+    <section id="about">
+        <h2>Niri buruz</h2>
+        <p>Explikazioa(Niri)</p>
+    </section>
+
+    <section id="services">
+        <h2>Servicios</h2>
+        <p>(Zerbitzuak)</p>
+    </section>
+
+    <section id="contact">
+        <h2>Kontaktuak</h2>
+        <form action="mailto:dronekinzelai@gmail.com" method="post">
+            <input type="text" name="name" placeholder="IZENA" required>
+            <input type="email" name="email" placeholder="KORREOA" required>
+            <textarea name="message" placeholder="MEZUA" required></textarea>
+            <button type="submit">BIDALI</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Portafolioa</p>
+    </footer>
+    
+    <script>
+        // Seleccionamos todos los elementos de la galería
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const close = document.querySelector('.close');
+    
+        // Añadimos un evento de click para cada imagen de la galería
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const largeImage = this.getAttribute('data-large');
+                lightboxImg.src = largeImage; // Cargamos la imagen grande
+                lightbox.style.display = "block"; // Mostramos el lightbox
+            });
+        });
+    
+        // Cerrar el lightbox al hacer click en la 'X'
+        close.addEventListener('click', function() {
+            lightbox.style.display = "none";
+        });
+    
+        // Cerrar el lightbox al hacer click fuera de la imagen
+        window.addEventListener('click', function(event) {
+            if (event.target === lightbox) {
+                lightbox.style.display = "none";
+            }
+        });
+    </script>
+    
+</body>
+</html>
